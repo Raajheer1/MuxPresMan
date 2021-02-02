@@ -20,6 +20,7 @@
     "@mux/mux-node": "^3.1.2",
     "basic-auth": "^2.0.1",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
     "socket.io": "^3.1.0"
   },

@@ -6,10 +6,17 @@ const fs = require('fs');
 const app = express();
 const https = require('https').Server({key: fs.readFileSync("/etc/letsencrypt/live/mux.eventstreaminglive.com/privkey.pem"), cert: fs.readFileSync("/etc/letsencrypt/live/mux.eventstreaminglive.com/fullchain.pem")}, app);
 const io = require('socket.io')(https);
+var path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs')
+
+app.get("/", (req, res) => {
+  res.render('index');
+})
 
 
 function requireHTTPS(req, res, next) {
@@ -31,6 +38,7 @@ let STREAM;
 
 // Storage Configuration
 const util = require('util');
+const { response } = require('express');
 const stateFilePath = './.data/stream';
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
