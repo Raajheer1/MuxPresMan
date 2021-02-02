@@ -1,0 +1,33 @@
+{
+  "name": "muxpresman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raajheer1/MuxPresMan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raajheer1/MuxPresMan/issues"
+  },
+  "homepage": "https://github.com/Raajheer1/MuxPresMan#readme",
+  "dependencies": {
+    "@mux/mux-node": "^3.1.2",
+    "basic-auth": "^2.0.1",
+    "express": "^4.17.1",
+    "socket.io": "^3.1.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
