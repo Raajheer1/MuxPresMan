@@ -1,23 +1,35 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const basicAuth = require('basic-auth');
+const fs = require('fs');
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const https = require('https').Server({key: fs.readFileSync("/etc/letsencrypt/live/mux.eventstreaminglive.com/privkey.pem"), cert: fs.readFileSync("/etc/letsencrypt/live/mux.eventstreaminglive.com/fullchain.pem")}, app);
+const io = require('socket.io')(https);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+
+function requireHTTPS(req, res, next) {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
+    return res.redirect('https://' + req.get('host') + req.url);
+  }
+  next();
+}
+app.use(requireHTTPS);
+
+
 // Setup the Mux SDK
 const Mux = require('@mux/mux-node');
-const { Video } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET);
+//const { Video } = new Mux(process.env.MUX_TOKEN_ID, process.env.MUX_TOKEN_SECRET);
+const { Video } = new Mux("577af3aa-3e59-4a98-8462-07b369ee48cd", "fB0dD77dio5/isG2FAJ8uvVBAeqKHY106t4KrRvr5rJVOdK4iCnijgtLmkkPEUUA5MhvmgkmM3/");
 
 let STREAM;
 
 // Storage Configuration
 const util = require('util');
-const fs = require('fs');
 const stateFilePath = './.data/stream';
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
@@ -49,7 +61,6 @@ const auth = (req, res, next) => {
 const createLiveStream = async () => {
   if (!process.env.MUX_TOKEN_ID || !process.env.MUX_TOKEN_SECRET) {
     console.error("It looks like you haven't set up your Mux token in the .env file yet.");
-    return;
   }
 
   // Create a new Live Stream!
@@ -147,9 +158,10 @@ app.post('/mux-hook', auth, function (req, res) {
 // Starts the HTTP listener for our application.
 // Note: glitch helpfully remaps HTTP 80 and 443 to process.env.PORT
 initialize().then((stream) => {
-  const listener = http.listen(process.env.PORT || 4000, function() {
+  const listener = https.listen(process.env.PORT || 443, function() {
     console.log('Your app is listening on port ' + listener.address().port);
     console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
     console.log(`Stream Key: ${stream.stream_key}`);
   });
 });
+
