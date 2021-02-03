@@ -25,12 +25,8 @@ app.get("/", (req, res) => {
 })
 
 app.get("/stream", (req, res) => {
-  console.log(stream)
-  console.log(stream_key)
-  console.log(stream.id)
-  console.log(stream.stream_key)
   res.render('stream', {
-    stream: STREAM.id
+    stream: STREAM.stream_key
   });
 })
 
