@@ -16,7 +16,7 @@ app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
   res.render('index', {
-    stream: stream.stream_key
+    stream: stream
   });
 })
 
@@ -173,6 +173,7 @@ initialize().then((stream) => {
     console.log('Your app is listening on port ' + listener.address().port);
     console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
     console.log(`Stream Key: ${stream.stream_key}`);
+    console.log(`Stream: ${ stream }`)
   });
 });
 
