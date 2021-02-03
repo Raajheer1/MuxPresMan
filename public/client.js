@@ -115,7 +115,7 @@
           
           // Header
           m('header', [
-            m('h1', '📺 Tubelet'),
+            m('h1', 'Event Streaming Live'),
           ]),
           
           // Main Stream - Show stream status
