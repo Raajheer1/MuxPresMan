@@ -14,7 +14,11 @@ app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
-
+app.get("/", (req, res) => {
+  res.render('index', {
+    stream: STREAM.id
+  });
+})
 
 function requireHTTPS(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku
@@ -170,9 +174,3 @@ initialize().then((stream) => {
     console.log(`Stream Key: ${stream.stream_key}`);
   });
 });
-
-app.get("/", (req, res) => {
-  res.render('index', {
-    stream: STREAM
-  });
-})
