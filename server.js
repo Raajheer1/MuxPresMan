@@ -24,6 +24,16 @@ app.get("/", (req, res) => {
   });
 })
 
+app.get("/stream", (req, res) => {
+  console.log(stream)
+  console.log(stream_key)
+  console.log(stream.id)
+  console.log(stream.stream_key)
+  res.render('stream', {
+    stream: STREAM.id
+  });
+})
+
 function requireHTTPS(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku
   if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
