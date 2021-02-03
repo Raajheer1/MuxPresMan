@@ -15,6 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
+  console.log(stream)
+  console.log(stream_key)
+  console.log(stream.id)
+  console.log(stream.stream_key)
   res.render('index', {
     stream: STREAM.id
   });
