@@ -15,7 +15,9 @@ app.set('view engine', 'ejs')
 
 
 app.get("/", (req, res) => {
-  res.render('index');
+  res.render('index', {
+    stream: STREAM.stream_key
+  });
 })
 
 app.get("/stream", (req, res) => {
