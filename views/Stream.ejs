@@ -34,7 +34,7 @@
                 <input type="text" class="form-control" value="<%= stream %>" id="StreamKey" aria-describedby="StreamKey">
               </div>
                 <input type="text" value="<%= stream %>" id="StreamKey">
-                <button  type="button" class="btn btn-success" onclick="myFunction()">Copy text</button>
+                <button  type="button" class="btn btn-success" onclick="CopyFunc()">Copy text</button>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -44,7 +44,7 @@
       </div>
   </body>
   <script>
-      function myFunction() {
+      function CopyFunc() {
         var copyText = document.getElementById("StreamKey");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
