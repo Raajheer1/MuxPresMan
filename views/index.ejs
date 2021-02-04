@@ -1,77 +1,73 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <title> Sample Fallback Player </title>
-  <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sample Fallback Player</title>
+    <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
 
-<style>
-
-.video-js-responsive-container.vjs-hd {
-    padding-top: 40.50%;
-}
-.video-js-responsive-container.vjs-sd {
-    padding-top: 55%;
-}
-.video-js-responsive-container {
-    width: 75%;
-    position: relative;
-}
-.video-js-responsive-container .video-js {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-body{
-background-color:#f2f2f2;
-}
-
-</style>
-
-</head>
-<body>
-<br><br><br>
-<center>
-    <div class="video-js-responsive-container vjs-hd">
-
-    <video
-        id="my-player"
-        class="video-js vjs-default-skin vjs-big-play-centered"
-        controls
-        preload="auto"
-        width="640"
-        height="360"
-        poster="https://www.presentationman.com/wp-content/uploads/2013/12/presman-logo.png"
-        data-setup='{}'
-    >
-    <source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">
-
-    <p class="vjs-no-js">
-        To view this video please enable JavaScript, and consider upgrading to a
-        web browser that
-        <a href="https://videojs.com/html5-video-support/" target="_blank"
-            >supports HTML5 video</a
+    <style>
+      .video-js-responsive-container.vjs-hd {
+        padding-top: 40.5%;
+      }
+      .video-js-responsive-container.vjs-sd {
+        padding-top: 55%;
+      }
+      .video-js-responsive-container {
+        width: 75%;
+        position: relative;
+      }
+      .video-js-responsive-container .video-js {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      body {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <br /><br /><br />
+    <center>
+      <div class="video-js-responsive-container vjs-hd">
+        <video
+          id="my-player"
+          class="video-js vjs-default-skin vjs-big-play-centered"
+          controls
+          preload="auto"
+          width="640"
+          height="360"
+          poster="https://www.presentationman.com/wp-content/uploads/2013/12/presman-logo.png"
+          data-setup="{}"
         >
-        </p>
-    </video>
+          <source
+            src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
+            type="application/x-mpegURL"
+          />
 
-    </div>
-</center>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.4/video.min.js"></script>
-<script src="https://src.litix.io/videojs/3/videojs-mux.js"></script>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading
+            to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+              >supports HTML5 video</a
+            >
+          </p>
+        </video>
+      </div>
+    </center>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.11.4/video.min.js"></script>
+    <script src="https://src.litix.io/videojs/3/videojs-mux.js"></script>
 
-<script>
-var player = videojs('my-player');
+    <script>
+      var player = videojs("my-player");
 
-player.mux({
-  debug: false,
-  data: {
-        env_key: 'rhu6fsq3og0k6ds224tabboo1',
-
-  }
-});
-</script>
-</body>
-
+      player.mux({
+        debug: false,
+        data: {
+          env_key: "rhu6fsq3og0k6ds224tabboo1",
+        },
+      });
+    </script>
+  </body>
 </html>
