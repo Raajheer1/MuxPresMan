@@ -18,29 +18,30 @@
 
   </head>
   <body>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#streamKey">
-        New Stream
-    </button>
-    <div class="modal fade" id="streamKey" tabindex="-1" aria-labelledby="streamKeyLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="streamKeylLabel">Stream Key</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="StreamKeyLabel">Stream Key</span>
-                <input type="text" class="form-control" value="<%= stream %>" id="StreamKey" aria-describedby="StreamKeyLabel">
-                <button  type="button" class="btn btn-success" onclick="CopyFunc()">Copy text</button>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">EventStreamingLive</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">RTMP Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Analytics</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" value="<%= stream %>" id="StreamKey" aria-label="StreamKeyLabel">
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="CopyFunc()" type="submit">Copy Key</button>
+        </form>
       </div>
+    </nav>
   </body>
   <script>
       function CopyFunc() {
