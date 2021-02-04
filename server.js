@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
   res.send("Hello Mookie!")
 })
 
-app.get("/index", (req, res) => {
+app.get("/", (req, res) => {
   res.render('index');
 })
 
