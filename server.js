@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
-  res.send("Hello Mookie!");
+  res.send("Hello Mookie!")
 })
 
 app.get("/index", (req, res) => {
@@ -182,3 +182,7 @@ app.use(requireHTTPS);
 //     console.log(`Stream Key: ${stream.stream_key}`);
 //   });
 // });
+
+app.listen(443, () => {
+  console.log("ITS RUNNING");
+})
