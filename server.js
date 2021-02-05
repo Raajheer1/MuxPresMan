@@ -180,8 +180,8 @@ app.post('/mux-hook', auth, function (req, res) {
 // Note: glitch helpfully remaps HTTP 80 and 443 to process.env.PORT
 const listener = https.listen(process.env.PORT || 443, function() {
   console.log('Your app is listening on port ' + listener.address().port);
+  initialize();
   console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
   console.log(`Stream Key: ${STREAM.stream_key}`);
-  initialize();
 });
 
