@@ -104,6 +104,7 @@ const initialize = async () => {
     console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
     console.log(`Stream Key: ${STREAM.stream_key}`);
   }
+  var randomthingy = setTimeout(initialize, 5000);
   return STREAM;
 }
 
@@ -174,19 +175,11 @@ app.post('/mux-hook', auth, function (req, res) {
   res.status(200).send('Thanks, Mux!');
 });
 
-function init() {
-  initialize().then((stream) => {
-    // console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
-    // console.log(`Stream Key: ${stream.stream_key}`);
-
-    var randomthingy = setTimeout(init, 5000);
-  })
-}
 
 // Starts the HTTP listener for our application.
 // Note: glitch helpfully remaps HTTP 80 and 443 to process.env.PORT
 const listener = https.listen(process.env.PORT || 443, function() {
   console.log('Your app is listening on port ' + listener.address().port);
-  init();
+  initialize();
 });
 
