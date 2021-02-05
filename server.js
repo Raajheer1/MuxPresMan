@@ -15,8 +15,9 @@ app.set('view engine', 'ejs')
 
 
 app.get("/", (req, res) => {
+  id = getPlaybackId
   res.render('index', {
-    stream: getPlaybackId
+    stream: id
   });
 })
 
