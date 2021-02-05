@@ -95,12 +95,14 @@ const initialize = async () => {
   try {
     const stateFile = await readFile(stateFilePath, 'utf8');
     STREAM = JSON.parse(stateFile);
-    console.log('Found an existing stream! Fetching updated data.');
+    // console.log('Found an existing stream! Fetching updated data.');
     STREAM = await Video.LiveStreams.get(STREAM.id);
   } catch (err) {
     console.log('No stream found, creating a new one.');
     STREAM = await createLiveStream();
     await writeFile(stateFilePath, JSON.stringify(STREAM));
+    console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
+    console.log(`Stream Key: ${STREAM.stream_key}`);
   }
   return STREAM;
 }
@@ -174,8 +176,8 @@ app.post('/mux-hook', auth, function (req, res) {
 
 function init() {
   initialize().then((stream) => {
-    console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
-    console.log(`Stream Key: ${stream.stream_key}`);
+    // console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
+    // console.log(`Stream Key: ${stream.stream_key}`);
 
     var randomthingy = setTimeout(init, 5000);
   })
