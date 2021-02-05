@@ -181,7 +181,5 @@ app.post('/mux-hook', auth, function (req, res) {
 const listener = https.listen(process.env.PORT || 443, function() {
   console.log('Your app is listening on port ' + listener.address().port);
   initialize();
-  console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
-  console.log(`Stream Key: ${STREAM.stream_key}`);
 });
 
